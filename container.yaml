@@ -51,7 +51,7 @@ paths:
                 items:
                   type: object
                   properties:
-                    containerID:
+                    equipmentReference:
                       type: string
                       description: Container ID
                       example: "MNBU0501741"
@@ -67,10 +67,10 @@ paths:
                       type: string
                       description: ISO Size Group Code
                       example: "22GP"
-                    emptyFull:
+                    emptyIndicatorCode:
                       type: string
                       description: Empty or Full
-                      example: "F"
+                      example: "FULL"
                     ctrGrossWeightKGM:
                       type: number
                       description: Container Gross Weight in KG
@@ -97,13 +97,13 @@ paths:
                       example: 2
                     inModeOfTransport:
                       type: string
-                      description: Inbound Mode of Transport
-                      example: "TR"
-                    inVesselIMO:
+                      description: Inbound Mode of Transport, see codes https://github.com/dcsaorg/DCSA-Information-Model/blob/master/datamodel/referencedata.d/modeoftransportcodes.csv
+                      example: "TRUCK"
+                    invesselIMONumber:
                       type: string
                       description: Inbound Vessel IMO
                       example: "9408957"
-                    inVoyageNo:
+                    universalImportVoyageReference:
                       type: string
                       description: Inbound Voyage Number
                       example: "25S05"
@@ -114,13 +114,13 @@ paths:
                       example: "2024-06-15"
                     outModeOfTransport:
                       type: string
-                      description: Outbound Mode of Transport
-                      example: "VE"
-                    outVesselIMO:
+                      description: Outbound Mode of Transport, see codes https://github.com/dcsaorg/DCSA-Information-Model/blob/master/datamodel/referencedata.d/modeoftransportcodes.csv
+                      example: "VESSEL"
+                    outvesselIMONumber:
                       type: string
                       description: Outbound Vessel IMO
                       example: "1234567"
-                    outVoyageNo:
+                    universalExportVoyageReference:
                       type: string
                       description: Outbound Voyage Number
                       example: "25S05"
@@ -143,7 +143,7 @@ components:
     ContainerList:
       type: object
       properties:
-        containerID:
+        equipmentReference:
           type: string
           description: Container ID
           example: "MNBU0501741"
@@ -159,10 +159,10 @@ components:
           type: string
           description: ISO Size Group Code
           example: "22GP"
-        emptyFull:
+        emptyIndicatorCode:
           type: string
           description: Empty or Full
-          example: "F"
+          example: "FULL"
         ctrGrossWeightKGM:
           type: number
           description: Container Gross Weight in KG
@@ -189,13 +189,13 @@ components:
           example: 2
         inModeOfTransport:
           type: string
-          description: Inbound Mode of Transport
-          example: "TR"
-        inVesselIMO:
+          description: Inbound Mode of Transport, see codes https://github.com/dcsaorg/DCSA-Information-Model/blob/master/datamodel/referencedata.d/modeoftransportcodes.csv
+          example: "TRUCK"
+        invesselIMONumber:
           type: string
           description: Inbound Vessel IMO
           example: "9408957"
-        inVoyageNo:
+        universalImportVoyageReference:
           type: string
           description: Inbound Voyage Number
           example: "25S05"
@@ -206,13 +206,13 @@ components:
           example: "2024-06-15"
         outModeOfTransport:
           type: string
-          description: Outbound Mode of Transport
-          example: "VE"
-        outVesselIMO:
+          description: Outbound Mode of Transport, see codes https://github.com/dcsaorg/DCSA-Information-Model/blob/master/datamodel/referencedata.d/modeoftransportcodes.csv
+          example: "VESSEL"
+        outvesselIMONumber:
           type: string
           description: Outbound Vessel IMO
           example: "1234567"
-        outVoyageNo:
+        universalExportVoyageReference:
           type: string
           description: Outbound Voyage Number
           example: "25S05"
