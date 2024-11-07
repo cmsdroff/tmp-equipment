@@ -1,0 +1,227 @@
+openapi: 3.0.0
+info:
+  title: Container Load Discharge List
+  description: API to retrieve container data based on port locode and terminal code.
+  version: 1.0.0
+servers:
+  - url: https://api.example.com
+
+paths:
+  /containers:
+    get:
+      summary: Retrieve a container list based on port locode and terminal code
+      parameters:
+        - name: portLocode
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "ESALG"
+          description: Port Locode
+        - name: smdgTerminalCode
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "APM"
+          description: SMDG Terminal Code
+        - name: dateFrom
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2024-10-21"
+          description: Start Date (YYYY-MM-DD)
+        - name: dateTo
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2024-11-04"
+          description: End Date (YYYY-MM-DD)
+      responses:
+        '200':
+          description: Successful response with container information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    containerID:
+                      type: string
+                      description: Container ID
+                      example: "MNBU0501741"
+                    bookingNo:
+                      type: string
+                      description: Booking Number
+                      example: "12345678-0001"
+                    ctrOperator:
+                      type: string
+                      description: Container Operator
+                      example: "HLC"
+                    isoSizeGroupCode:
+                      type: string
+                      description: ISO Size Group Code
+                      example: "22GP"
+                    emptyFull:
+                      type: string
+                      description: Empty or Full
+                      example: "F"
+                    ctrGrossWeightKGM:
+                      type: number
+                      description: Container Gross Weight in KG
+                      example: 26500
+                    isDG:
+                      type: boolean
+                      description: Dangerous Goods
+                      example: true
+                    isOperationalReefer:
+                      type: boolean
+                      description: Operational Reefer
+                      example: false
+                    isOverdimension:
+                      type: boolean
+                      description: Overdimension Cargo
+                      example: false
+                    isBreakbulk:
+                      type: boolean
+                      description: Breakbulk Cargo
+                      example: false
+                    priorityClass:
+                      type: number
+                      description: Priority Class
+                      example: 2
+                    inModeOfTransport:
+                      type: string
+                      description: Inbound Mode of Transport
+                      example: "TR"
+                    inVesselIMO:
+                      type: string
+                      description: Inbound Vessel IMO
+                      example: "9408957"
+                    inVoyageNo:
+                      type: string
+                      description: Inbound Voyage Number
+                      example: "25S05"
+                    inVesselETA:
+                      type: string
+                      format: date
+                      description: Inbound Vessel ETA (YYYY-MM-DD)
+                      example: "2024-06-15"
+                    outModeOfTransport:
+                      type: string
+                      description: Outbound Mode of Transport
+                      example: "VE"
+                    outVesselIMO:
+                      type: string
+                      description: Outbound Vessel IMO
+                      example: "1234567"
+                    outVoyageNo:
+                      type: string
+                      description: Outbound Voyage Number
+                      example: "25S05"
+                    outVesselETD:
+                      type: string
+                      format: date
+                      description: Outbound Vessel ETD (YYYY-MM-DD)
+                      example: "2024-06-20"
+                    nextPortLocode:
+                      type: string
+                      description: Next Port Locode
+                      example: "EGPSD"
+        '400':
+          description: Invalid input parameters
+        '500':
+          description: Server error
+
+components:
+  schemas:
+    ContainerList:
+      type: object
+      properties:
+        containerID:
+          type: string
+          description: Container ID
+          example: "MNBU0501741"
+        bookingNo:
+          type: string
+          description: Booking Number
+          example: "12345678-0001"
+        ctrOperator:
+          type: string
+          description: Container Operator
+          example: "HLC"
+        isoSizeGroupCode:
+          type: string
+          description: ISO Size Group Code
+          example: "22GP"
+        emptyFull:
+          type: string
+          description: Empty or Full
+          example: "F"
+        ctrGrossWeightKGM:
+          type: number
+          description: Container Gross Weight in KG
+          example: 26500
+        isDG:
+          type: boolean
+          description: Dangerous Goods
+          example: true
+        isOperationalReefer:
+          type: boolean
+          description: Operational Reefer
+          example: false
+        isOverdimension:
+          type: boolean
+          description: Overdimension Cargo
+          example: false
+        isBreakbulk:
+          type: boolean
+          description: Breakbulk Cargo
+          example: false
+        priorityClass:
+          type: number
+          description: Priority Class
+          example: 2
+        inModeOfTransport:
+          type: string
+          description: Inbound Mode of Transport
+          example: "TR"
+        inVesselIMO:
+          type: string
+          description: Inbound Vessel IMO
+          example: "9408957"
+        inVoyageNo:
+          type: string
+          description: Inbound Voyage Number
+          example: "25S05"
+        inVesselETA:
+          type: string
+          format: date
+          description: Inbound Vessel ETA (YYYY-MM-DD)
+          example: "2024-06-15"
+        outModeOfTransport:
+          type: string
+          description: Outbound Mode of Transport
+          example: "VE"
+        outVesselIMO:
+          type: string
+          description: Outbound Vessel IMO
+          example: "1234567"
+        outVoyageNo:
+          type: string
+          description: Outbound Voyage Number
+          example: "25S05"
+        outVesselETD:
+          type: string
+          format: date
+          description: Outbound Vessel ETD (YYYY-MM-DD)
+          example: "2024-06-20"
+        nextPortLocode:
+          type: string
+          description: Next Port Locode
+          example: "EGPSD"
